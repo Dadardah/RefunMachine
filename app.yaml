@@ -1,0 +1,51 @@
+runtime: php55
+api_version: 1
+
+handlers:
+# Serve images as static resources.
+- url: /(.*\.(gif|png|jpg|htm|html|css|js))
+  static_files: \1
+  upload: .+\.(gif|png|jpg|htm|html|css|js)$
+  application_readable: true
+
+# Serve php scripts.
+
+- url: /
+  script: login.php
+
+- url: /(.+\.php)$
+  script: \1
+
+
+# runtime: php55
+# api_version: 1
+
+# handlers:
+
+# - url: /(.*\.(gif|png|jpg|htm|html|css|js))
+#   static_files: \1
+#   upload: .*\.(gif|png|jpg|htm|html|css|js)$
+
+  
+# - url: /
+#   script: login.php
+
+# - url: /index\.html
+#   script: home.php
+
+# - url: /scan/.*
+#   script: scan.php
+
+# - url: /stylesheets
+#   static_dir: stylesheets
+
+# - url: /(.*\.(gif|png|jpg))$
+#   static_files: static/\1
+#   upload: static/.*\.(gif|png|jpg)$
+
+# - url: /admin/.*
+#   script: admin.php
+#   login: admin
+
+# - url: /.*
+#   script: not_found.php
